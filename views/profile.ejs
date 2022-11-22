@@ -1,0 +1,140 @@
+<%- include('partials/header') -%>
+<div class="container">
+
+  <section class="thePrints">
+    <div class="paw-print-1">
+      <div class="pad large"></div>
+      <div class="pad small-1"></div>
+      <div class="pad small-2"></div>
+      <div class="pad small-3"></div>
+      <div class="pad small-4"></div>
+  </div>
+      
+  <div class="paw-print-2">
+      <div class="pad large"></div>
+      <div class="pad small-1"></div>
+      <div class="pad small-2"></div>
+      <div class="pad small-3"></div>
+      <div class="pad small-4"></div>
+  </div>    
+      
+  <div class="paw-print-3">
+      <div class="pad large"></div>
+      <div class="pad small-1"></div>
+      <div class="pad small-2"></div>
+      <div class="pad small-3"></div>
+      <div class="pad small-4"></div>
+  </div>    
+      
+  <div class="paw-print-4">
+      <div class="pad large"></div>
+      <div class="pad small-1"></div>
+      <div class="pad small-2"></div>
+      <div class="pad small-3"></div>
+      <div class="pad small-4"></div>
+  </div>
+      
+  <div class="paw-print-5">
+      <div class="pad large"></div>
+      <div class="pad small-1"></div>
+      <div class="pad small-2"></div>
+      <div class="pad small-3"></div>
+      <div class="pad small-4"></div>
+  </div>
+      
+  <div class="paw-print-6">
+      <div class="pad large"></div>
+      <div class="pad small-1"></div>
+      <div class="pad small-2"></div>
+      <div class="pad small-3"></div>
+      <div class="pad small-4"></div>
+  </div>
+      
+  <div class="paw-print-7">
+      <div class="pad large"></div>
+      <div class="pad small-1"></div>
+      <div class="pad small-2"></div>
+      <div class="pad small-3"></div>
+      <div class="pad small-4"></div>
+  </div>
+  
+  <div class="paw-print-8">
+      <div class="pad large"></div>
+      <div class="pad small-1"></div>
+      <div class="pad small-2"></div>
+      <div class="pad small-3"></div>
+      <div class="pad small-4"></div>
+  </div>
+</section>
+  <div class="row mt-5">
+    <!--THIS IS ORIGINALLY THE LEFT SIDE OF THE PAGE
+    WHERE THE USER IS ABLE TO UPLOAD THEIR PHOTO.  I WANT
+  IT TO MOVE TO THE RIGHT SIDE OF THE PAGE IF POSSIBLE AND A PHOTO
+OF A GIRL HOLDING A DOG ON THE LEFT SIDE-->
+      <div class="userUploadForm">
+          <div>
+              <p class="profileText"><strong>My Unleashed Username</strong>: <div class="usernameText"><%= user.userName %></div></p>
+              <p class="profileText"><strong>Account Email</strong>:<div class="emailText"><%= user.email %></div></p>
+
+              <div class="theLogoutContainer">
+
+                <a href="/logout" class="logoutButton">
+                  <img src="https://i.ibb.co/0KMjqX1/logoutpost-300-200-px.png">
+                </a>
+
+              </div>
+          </div>
+          
+     
+
+
+          <div class="mt-5">
+            <h2>Create a New Post</h2>
+            <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+              <div class="mb-3">
+                  <label for="title" class="form-label">Post Title</label>
+                  <input type="text" class="form-control" id="title" name="title">
+              </div>
+              <div class="mb-3">
+                <label for="caption" class="form-label">Photo Caption</label>
+                <textarea class="form-control" id="caption" name="caption"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="imgUpload" class="form-label">Choose An Image To Upload!</label>
+                <input type="file" class="form-control" id="imageUpload" name="file">
+              </div>
+              <button type="submit" class="uploadButton" value="Upload"><img src="https://i.ibb.co/bNy8hCb/Upload-Post-1.png" alt="newbutton"></button>
+
+          
+            </form>
+          </div>
+      </div>
+
+      <div class="rightSidePhoto">
+
+        <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1594&q=80">
+      </div>
+      <div class="userPhotoFeed">
+
+        <div class="thePhotoFeed">
+          <h2 class="livePhotoTitle">My Live Photo Collection</h2>
+        <ul class="row list-unstyled">
+        <% for(var i=0; i<posts.length; i++) {%>
+          <li class="col-6 justify-content-between mt-5">
+           <div class="polaroid photo"> 
+            <a href="/post/<%= posts[i]._id%>">
+              <img class="img-fluid" src="<%= posts[i].image%>">
+            </a>
+            </div>
+          </li>
+        <% } %>
+        </ul>
+        <div class="row justify-content-center mt-5">
+          <a class="btn btn-primary" href="/feed">Return to Feed</a>
+        </div>  
+      </div>
+      </div>  
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') -%>
