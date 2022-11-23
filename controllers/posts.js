@@ -36,7 +36,8 @@ module.exports = {
       await Post.create({
         customerName: req.body.customerName,
         customerOrder: req.body.customerOrder,
-        user: req.user.id
+        user: req.user.id,
+        completed: false
       });
       console.log("Order has been added!");
       res.redirect("/profile");
@@ -44,7 +45,7 @@ module.exports = {
       console.log(err);
     }
   },
-  likePost: async (req, res) => {
+  completedOrder: async (req, res) => {
     try {
       await Post.findOneAndUpdate(
         { _id: req.params.id },
