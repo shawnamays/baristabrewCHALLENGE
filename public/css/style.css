@@ -9,21 +9,21 @@ body {
     background-repeat: repeat;
 }
 
-.uploadButton {
-   background-color: transparent;
-    height: 300px;
-    width: 300px;
+.sendOrder {
+
+   width: 300px;
+   height: 100px;
     border: none;
 }
 
-.uploadButton img {
-   
-    height: 300px;
-    width: 300px;
+.sendOrder img {
+  width: 300px;
+  height: 100px;
+
   
 }
 .logoutButton {
-    background-color: transparent;
+  
    
  }
 
