@@ -1,13 +1,13 @@
 // const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
-// const Comment = require("../models/Comment");
+const Comment = require("../models/Comment");
 
 
 module.exports = {
   getProfile: async (req, res) => {
     try {
       const posts = await Post.find({ user: req.user.id });
-      res.render("profile.ejs", { posts: posts, user: req.user });
+      res.render("profile.ejs", { posts: posts || [], user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -30,11 +30,12 @@ module.exports = {
     }
   },
   createPost: async (req, res) => {
+    console.log(req.body)
     try {
      
       await Post.create({
-        title: req.body.title,
-        caption: req.body.caption,
+        customerName: req.body.customerName,
+        customerOrder: req.body.customerOrder,
         user: req.user.id
       });
       console.log("Order has been added!");

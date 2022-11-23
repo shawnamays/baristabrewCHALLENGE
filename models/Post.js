@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 
 const PostSchema = new mongoose.Schema({
-  title: {
+  customerName: {
     type: String,
-    required: true,
+    required: false,
   },
   
-  caption: {
+  customerOrder: {
     type: String,
-    required: true,
+    required: false,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,

@@ -6,14 +6,14 @@
 
           <div class="mt-5">
             <h2>Create a New Order</h2>
-            <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+            <form action="/post/createPost" method="POST">
               <div class="mb-3">
                   <label for="title" class="form-label">Customer Name:</label>
                   <input type="text" class="form-control" id="title" name="customerName">
               </div>
               <div class="mb-3">
                 <label for="caption" class="form-label">Place Your Order Here:</label>
-                <textarea class="form-control" id="caption" name="caption"></textarea>
+                <textarea class="form-control" id="caption" name="customerOrder"></textarea>
               </div>
           
               <button type="submit" class="sendOrder" value="submit">submit my order</button>
@@ -25,19 +25,20 @@
       <div class="userPhotoFeed">
 
         <div class="thePhotoFeed">
+
           <h2 class="livePhotoTitle">orders</h2>
 
           <ul class="row list-unstyled">
             <% for(var i=0; i<posts.length; i++) {%>
               <li class="col-6 justify-content-between mt-5">
-              
-                <a href="/post/<%= posts[i]._id%>">
-                  
-                </a>
-                
+
+               <p> <%= posts[i].customerName %> </p>
+               <p> <%= posts[i].customerOrder %> </p>
               </li>
             <% } %>
             </ul>
+
+
         <div class="row justify-content-center mt-5">
          
         </div>  
