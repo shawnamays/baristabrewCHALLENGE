@@ -45,16 +45,16 @@ module.exports = {
       console.log(err);
     }
   },
-  completedOrder: async (req, res) => {
+  completeOrder: async (req, res) => {
     try {
       await Post.findOneAndUpdate(
         { _id: req.params.id },
         {
-         completed: true;
+         completed: true
         }
       );
       console.log("Likes +1");
-      res.redirect(`/post/${req.params.id}`);
+      res.redirect('/profile');
     } catch (err) {
       console.log(err);
     }
@@ -85,15 +85,13 @@ module.exports = {
 
   
 
-  deletePost: async (req, res) => {
+  deleteOrder: async (req, res) => {
     try {
       // Find post by id
-      let post = await Post.findById({ _id: req.params.id });
-      // Delete image from cloudinary
-      await cloudinary.uploader.destroy(post.cloudinaryId);
+      let post = await Post.findById({ _id: req.body._id });
       // Delete post from db
-      await Post.remove({ _id: req.params.id });
-      console.log("Deleted Post");
+      await Post.remove({ _id: req.body._id });
+      console.log("Deleted Order");
       res.redirect("/profile");
     } catch (err) {
       res.redirect("/profile");

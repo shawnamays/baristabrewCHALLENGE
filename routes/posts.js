@@ -9,9 +9,9 @@ router.get("/:id", ensureAuth, postsController.getPost);
 
 router.post("/createPost", postsController.createPost);
 
-// router.put("/likePost/:id", postsController.likePost);
+router.put("/completeOrder", postsController.completeOrder);
 
-router.delete("/deletePost/:id", postsController.deletePost);
+router.delete("/deleteOrder", postsController.deleteOrder);
 
 module.exports = router;
 
