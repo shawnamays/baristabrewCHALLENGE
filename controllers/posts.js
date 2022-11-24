@@ -6,8 +6,10 @@ const Comment = require("../models/Comment");
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const posts = await Post.find();
-      res.render("profile.ejs", { posts: posts || [], user: req.user });
+      const posts = await Post.find({completed: true});
+      const notDone = await Post.find({completed: false});
+      // if(posts)
+      res.render("profile.ejs", { posts: posts || [], user: req.user, notDone: notDone || []});
     } catch (err) {
       console.log(err);
     }
@@ -48,7 +50,7 @@ module.exports = {
   completeOrder: async (req, res) => {
     try {
       await Post.findOneAndUpdate(
-        { _id: req.params.id },
+        { _id: req.body._id },
         {
          completed: true
         }
